@@ -4,14 +4,14 @@ session_start();
 require '../config/database.php';
 require '../app/models/UserModel.php';
 require '../app/models/BmiModel.php';
-require '../app/controllers/AuthController.php';
-require '../app/controllers/BmiController.php';
+require '../app/controllers/AuthControllers.php';
+require '../app/controllers/BmiControllers.php';
 
 $userModel = new UserModel($db);
-$auth = new AuthController($userModel);
+$auth = new AuthControllers($userModel);
 
 $bmiModel = new BmiModel($db);
-$bmi = new BmiController($bmiModel);
+$bmi = new BmiControllers($bmiModel);
 
 $action = $_GET['action'] ?? ($_SESSION['user_id'] ? 'form' : 'login');
 
